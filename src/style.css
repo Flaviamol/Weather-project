@@ -1,0 +1,132 @@
+body {
+  background-color: #e8eae6;
+  font-family: "Bona Nova", serif;
+  margin: 40px auto;
+}
+
+.current-temperature {
+  font-size: 64px;
+}
+
+.card {
+  background-color: #cfdac8;
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 900px;
+  border: 2px solid #a2b29f;
+  border-radius: 15px;
+}
+.card-current {
+  background-color: #a2b29f;
+  color: #e8eae6;
+  border: 2px solid #cfdac8;
+}
+
+ul {
+  list-style: none;
+}
+
+.sun-icon-current {
+  font-size: 64px;
+  color: #fcf876;
+}
+
+.fa-temperature-low {
+  color: #90cbf8;
+}
+
+.fa-temperature-high {
+  color: #de675a;
+}
+
+.fa-umbrella-beach {
+  color: #fcf876;
+}
+
+.fa-tint {
+  color: #90cbf8;
+}
+
+.fa-wind {
+  color: #b7b6b6;
+}
+
+.current-information {
+  font-size: 18px;
+}
+
+span.variables-border-identifier {
+  border: 3px solid;
+  width: 6px;
+  border-radius: 3px;
+  height: 50px;
+  float: left;
+}
+
+.margin-left-12 {
+  margin-left: 12px;
+}
+
+span.temperature-information {
+  border-color: #de675a;
+}
+
+span.uv {
+  border-color: #fcf876;
+}
+
+span.humidity {
+  border-color: #90cbf8;
+}
+
+span.wind {
+  border-color: #b7b6b6;
+}
+
+.forecast {
+  color: #798777;
+}
+
+.row-forecast {
+  position: relative;
+  right: 20px;
+}
+
+.forecast-title {
+  margin: 0 0 15px;
+}
+
+.forecast ul li {
+  font-size: 18px;
+}
+
+.fa-cloud-sun,
+.sun-icon-forecast,
+.fa-cloud-showers-heavy,
+.fa-cloud-sun-rain {
+  font-size: 34px;
+  margin: 20px;
+}
+
+.fa-cloud-sun,
+.sun-icon-forecast {
+  color: #fcf876;
+}
+
+.fa-cloud-showers-heavy,
+.fa-cloud-sun-rain {
+  color: #90cbf8;
+}
+
+.border-forecast {
+  border-color: #b7b6b6;
+}
+
+.input-search {
+  width: 300px;
+}
+
+.btn {
+  position: relative;
+  left: 350px;
+}
