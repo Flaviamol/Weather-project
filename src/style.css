@@ -130,3 +130,8 @@ span.wind {
   position: relative;
   left: 350px;
 }
+
+.link-open-source {
+  font-family: "Bona Nova", serif;
+  margin-left: 180px;
+}
