@@ -22,6 +22,13 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 let currentDay = document.querySelector(".current-subtitle");
 currentDay.innerHTML = `${day} ${hours}:${minutes}`;
 
@@ -91,33 +98,36 @@ function applyWeatherChanges(response) {
 // Forecast
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast-day-information");
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   let forecastHtml = `<div class="row">`;
-  let count = 0;
-  days.forEach(function (day) {
-    if (count == 6) {
-      return;
-    }
-    forecastHtml += `<div class="col-2 text-center">
-              <div class="forecast-day">${day}</div>
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHtml += `<div class="col-2 text-center">
+              <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
               <br />
               <img
-                src="http://openweathermap.org/img/wn/01d@2x.png"
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
                 alt="clear"
                 class="forecast-icon"
               />
               <br />
-              <span class="forecast-temp-min">15</span
+              <span class="forecast-temp-min">${Math.round(
+                forecastDay.temp.min
+              )}</span
               ><span class="temp-type">°C</span> /
               <strong
-                ><span class="forecast-temp-max">21</span
+                ><span class="forecast-temp-max">${Math.round(
+                  forecastDay.temp.max
+                )}</span
                 ><span class="temp-type">°C</span></strong
               >
             </div>`;
-    count++;
+    }
   });
 
   forecastHtml = forecastHtml + `</div>`;
