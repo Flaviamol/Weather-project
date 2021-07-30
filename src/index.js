@@ -99,6 +99,8 @@ function applyWeatherChanges(response) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
+  // removes the first element (today)
+  response.data.daily.shift();
   let forecastElement = document.querySelector("#forecast-day-information");
 
   let forecastHtml = `<div class="row">`;
@@ -135,3 +137,29 @@ function displayForecast(response) {
 }
 
 currentCityBtn.click();
+
+//celsius and fahrenheit
+function dislplayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".current-temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+
+function dislplaycelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".current-temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", dislplayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", dislplaycelsiusTemperature);
