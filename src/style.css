@@ -40,6 +40,12 @@ ul {
   height: 150px;
 }
 
+.forecast-icon {
+  width: 70px;
+  height: 70px;
+  margin-top: -30px;
+}
+
 .fa-temperature-low {
   color: #90cbf8;
 }
@@ -107,24 +113,6 @@ span.wind {
 
 .forecast ul li {
   font-size: 18px;
-}
-
-.fa-cloud-sun,
-.sun-icon-forecast,
-.fa-cloud-showers-heavy,
-.fa-cloud-sun-rain {
-  font-size: 34px;
-  margin: 20px;
-}
-
-.fa-cloud-sun,
-.sun-icon-forecast {
-  color: #fcf876;
-}
-
-.fa-cloud-showers-heavy,
-.fa-cloud-sun-rain {
-  color: #90cbf8;
 }
 
 .border-forecast {
