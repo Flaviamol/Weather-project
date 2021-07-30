@@ -34,7 +34,6 @@ function changeCity(event) {
   cityForecast.innerHTML = `Next forecast for <span class="city-name">${newCityName.value}</span>`;
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newCityName.value}&appid=${apiKey}&units=${units}`;
-
   axios.get(apiUrl).then(applyWeatherChanges);
 }
 
@@ -56,6 +55,11 @@ function currentPositionAndTemperature(position) {
 
 let currentCityBtn = document.querySelector("#current-city-btn");
 currentCityBtn.addEventListener("click", currentCityTemperature);
+
+function getForecast(coordinates) {
+  apiGeoUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiGeoUrl).then(displayForecast);
+}
 
 function applyWeatherChanges(response) {
   let cityName = document.querySelector("h1");
@@ -80,12 +84,14 @@ function applyWeatherChanges(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  displayForecast();
+
+  getForecast(response.data.coord);
 }
 
 // Forecast
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast-day-information");
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
