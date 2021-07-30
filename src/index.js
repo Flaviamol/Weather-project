@@ -58,6 +58,11 @@ let currentCityBtn = document.querySelector("#current-city-btn");
 currentCityBtn.addEventListener("click", currentCityTemperature);
 
 function applyWeatherChanges(response) {
+  let cityName = document.querySelector("h1");
+  cityName.innerHTML = `<span class="city-name">${response.data.name}</span>, Weather`;
+  let cityForecast = document.querySelector(".forecast-title");
+  cityForecast.innerHTML = `Next forecast for <span class="city-name">${response.data.name}</span>`;
+
   let currentTempMin = document.querySelector(".temperature-Min");
   currentTempMin.innerHTML = Math.round(response.data.main.temp_min);
   let currentTempMax = document.querySelector(".temperature-Max");
@@ -75,6 +80,42 @@ function applyWeatherChanges(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  displayForecast();
 }
 
 // Forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-day-information");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let forecastHtml = `<div class="row">`;
+  let count = 0;
+  days.forEach(function (day) {
+    if (count == 6) {
+      return;
+    }
+    forecastHtml += `<div class="col-2 text-center">
+              <div class="forecast-day">${day}</div>
+              <br />
+              <img
+                src="http://openweathermap.org/img/wn/01d@2x.png"
+                alt="clear"
+                class="forecast-icon"
+              />
+              <br />
+              <span class="forecast-temp-min">15</span
+              ><span class="temp-type">°C</span> /
+              <strong
+                ><span class="forecast-temp-max">21</span
+                ><span class="temp-type">°C</span></strong
+              >
+            </div>`;
+    count++;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
+currentCityBtn.click();
