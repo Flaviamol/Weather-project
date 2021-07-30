@@ -8,6 +8,14 @@ body {
   font-size: 64px;
 }
 
+h3 {
+  font-style: italic;
+}
+
+h3::first-letter {
+  text-transform: capitalize;
+}
+
 .card {
   background-color: #cfdac8;
   margin: 15px auto;
@@ -26,9 +34,10 @@ ul {
   list-style: none;
 }
 
-.sun-icon-current {
-  font-size: 64px;
-  color: #fcf876;
+.current-icon {
+  margin-top: -85px;
+  width: 150px;
+  height: 150px;
 }
 
 .fa-temperature-low {
@@ -39,7 +48,7 @@ ul {
   color: #de675a;
 }
 
-.fa-umbrella-beach {
+.fa-feather-alt {
   color: #fcf876;
 }
 

@@ -35,13 +35,7 @@ function changeCity(event) {
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newCityName.value}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(function (response) {
-    console.log(response.data);
-    let temperature = Math.round(response.data.main.temp);
-    console.log(temperature);
-    let currentTemperature = document.querySelector(".current-temperature");
-    currentTemperature.innerHTML = `${temperature}°C`;
-  });
+  axios.get(apiUrl).then(applyWeatherChanges);
 }
 
 let inputCity = document.querySelector("#search-city");
@@ -57,18 +51,28 @@ function currentPositionAndTemperature(position) {
   let longitude = position.coords.longitude;
   let apiUrlGeoLoc = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrlGeoLoc).then(function (response) {
-    let temperature = Math.round(response.data.main.temp);
-    let currentTemperatureElem = document.querySelector(".current-temperature");
-    currentTemperatureElem.innerHTML = `${temperature}°C`;
-
-    let currentCity = response.data.name;
-    let cityNameElem = document.querySelectorAll(".city-name");
-    cityNameElem.forEach(function (element) {
-      element.innerHTML = currentCity;
-    });
-  });
+  axios.get(apiUrlGeoLoc).then(applyWeatherChanges);
 }
 
 let currentCityBtn = document.querySelector("#current-city-btn");
 currentCityBtn.addEventListener("click", currentCityTemperature);
+
+function applyWeatherChanges(response) {
+  let currentTempMin = document.querySelector(".temperature-Min");
+  currentTempMin.innerHTML = Math.round(response.data.main.temp_min);
+  let currentTempMax = document.querySelector(".temperature-Max");
+  currentTempMax.innerHTML = Math.round(response.data.main.temp_max);
+  let currentFeelLike = document.querySelector(".feel-like");
+  currentFeelLike.innerHTML = ` ${Math.round(response.data.main.feels_like)}°`;
+  let currentHumidity = document.querySelector(".humidity");
+  currentHumidity.innerHTML = ` ${response.data.main.humidity}%`;
+  let currentWind = document.querySelector(".wind-speed");
+  currentWind.innerHTML = `WSW ${Math.round(response.data.wind.speed)} km/h`;
+  let currentDescription = document.querySelector("h3");
+  currentDescription.innerHTML = response.data.weather[0].description;
+  let currentIcon = document.querySelector(".current-icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}

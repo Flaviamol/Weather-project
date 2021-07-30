@@ -35,11 +35,14 @@
             <span class="temp-type">°C</span>
           </div>
           <div class="col-4 text-center">
-            <h4>Clear and Shine</h4>
-            <p><i>0% chance of rain</i></p>
+            <h3>Clear and Shine</h3>
           </div>
           <div class="col-4 text-center">
-            <i class="fas fa-sun sun-icon-current"></i>
+            <img
+              src="http://openweathermap.org/img/wn/01d@2x.png"
+              alt="clear"
+              class="current-icon"
+            />
           </div>
         </div>
         <div class="current-information">
@@ -51,10 +54,10 @@
               <div class="margin-left-12">
                 Temperature <br />
                 <i class="fas fa-temperature-low"></i
-                ><span class="temperature">12</span>
+                ><span class="temperature-Min">12</span>
                 <span class="temp-type">°C</span> /
                 <strong
-                  ><span class="temperature">24</span
+                  ><span class="temperature-Max">24</span
                   ><span class="temp-type">°C</span></strong
                 >
                 <i class="fas fa-temperature-high"></i>
@@ -63,17 +66,18 @@
             <li class="col-3">
               <span class="variables-border-identifier uv"></span>
               <div class="margin-left-12">
-                UV Index
+                Feels Like
                 <br />
-                <i class="fas fa-umbrella-beach"></i> 2 of 10
+                <i class="fas fa-feather-alt"></i>
+                <span class="feel-like">18°</span>
               </div>
             </li>
             <li class="col-3">
-              <span class="variables-border-identifier humidity"></span>
+              <span class="variables-border-identifier"></span>
               <div class="margin-left-12">
                 Humidity
                 <br />
-                <i class="fas fa-tint"></i> 17 %
+                <i class="fas fa-tint"></i><span class="humidity"> 17 %</span>
               </div>
             </li>
             <li class="col-3">
@@ -81,7 +85,8 @@
               <div class="margin-left-12">
                 Wind
                 <br />
-                <i class="fas fa-wind"></i> WSW 14 km/h
+                <i class="fas fa-wind"></i
+                ><span class="wind-speed">WSW 14 km/h</span>
               </div>
             </li>
           </ul>
@@ -175,14 +180,17 @@
         </form>
       </section>
     </div>
-    <a
-      href="https://github.com/Flaviamol/Weather-project"
-      target="_blank"
-      rel="noreferrer"
-      class="link-open-source"
-      >Open-Source code</a
-    >
-    by Flávia Mól
+    <p class="text-center">
+      <a
+        href="https://github.com/Flaviamol/Weather-project"
+        target="_blank"
+        rel="noreferrer"
+        class="link-open-source"
+        >Open-Source code</a
+      >
+      by Flávia Mól
+    </p>
+
     <script src="src/index.js"></script>
   </body>
 </html>
