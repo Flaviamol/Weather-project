@@ -6,6 +6,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #90cbf8;
 }
 
 .current-temperature {
@@ -15,20 +16,17 @@ a {
 .celsius-link,
 .fahrenheit-link {
   color: #e8eae6;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 36px;
   font-weight: 400;
-  position: relative;
-  line-height: 1;
-  top: -34px;
 }
 
-.temp-type .active {
-  color: #071e3d;
+#temp-type .active {
+  color: #e8eae6;
   cursor: default;
 }
 
-.temp-type .active:hover {
+#temp-type .active:hover {
   text-decoration: none;
 }
 
